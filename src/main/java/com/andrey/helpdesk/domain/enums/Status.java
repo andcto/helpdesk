@@ -8,8 +8,8 @@ import lombok.Getter;
 public enum Status {
     ABERTO(0, "ABERTO"), ANDAMENTO(1, "ANDAMENTO"), ENCERRADO(2, "ENCERRADO");
 
-    private Integer codigo;
-    private String descricao;
+    private final Integer codigo;
+    private final String descricao;
 
     public static Status toEnum(Integer codigo){
         if(codigo == null){

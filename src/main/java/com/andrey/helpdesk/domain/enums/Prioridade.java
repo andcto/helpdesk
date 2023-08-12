@@ -8,8 +8,8 @@ import lombok.Getter;
 public enum Prioridade {
     BAIXA(0, "BAIXA"), MEDIA(1, "MÉDIA"), ALTA(2, "ALTA");
 
-    private Integer codigo;
-    private String descricao;
+    private final Integer codigo;
+    private final String descricao;
 
     public static Prioridade toEnum(Integer codigo){
         if(codigo == null){
