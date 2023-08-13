@@ -2,24 +2,41 @@ package com.andrey.helpdesk.domain;
 
 import com.andrey.helpdesk.domain.enums.Prioridade;
 import com.andrey.helpdesk.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Chamado {
+@Entity
+public class Chamado implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
     private Prioridade prioridade;
     private Status status;
     private String titulo;
     private String observacoes;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tecnico")
     private Tecnico tecnico;
 
     public Chamado(){
