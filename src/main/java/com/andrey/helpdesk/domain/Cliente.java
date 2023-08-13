@@ -18,7 +18,7 @@ public class Cliente extends Pessoa{
 
     @JsonIgnore
     @OneToMany(mappedBy = "cliente")
-    private List<Chamado> chamados = new ArrayList<Chamado>();
+    private List<Chamado> chamados = new ArrayList<>();
     public Cliente() {
         super();
         addPerfil(Perfil.CLIENTE);
