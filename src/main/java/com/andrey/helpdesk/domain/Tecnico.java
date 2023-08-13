@@ -1,6 +1,7 @@
 package com.andrey.helpdesk.domain;
 
 import com.andrey.helpdesk.domain.enums.Perfil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,8 +15,9 @@ import java.util.List;
 public class Tecnico extends Pessoa{
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tecnico")
-    private List<Chamado> chamados = new ArrayList<Chamado>();
+    private List<Chamado> chamados = new ArrayList<>();
 
     public Tecnico() {
         super();
